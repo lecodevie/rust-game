@@ -123,17 +123,15 @@ pub fn run() {
                     }
                 }
             }
-            Err(e) => {
-                match e {
-                    GuessError::Quit => break,
-                    GuessError::Restart => {
-                        is_restarting = true;
-                        continue;
-                    }
-                    _ => continue,
-                }
+            Err(GuessError::Restart) => {
+                is_restarting = true;
+                continue;
             }
+            Err(GuessError::Quit) => {
+                println!("Game Over");
+                break;
+            }
+            Err(_) => continue,
         }
     }
-    println!("Game Over");
 }
