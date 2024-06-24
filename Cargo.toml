@@ -2,6 +2,16 @@
 name = "game"
 version = "0.1.0"
 edition = "2021"
+description = "Just For Fun"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 rand = "0.8.5"
+log = "0.4.21"
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+opt-level = 3
+panic = "abort"
